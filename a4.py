@@ -10,8 +10,8 @@ class TTTBoard:
             represent moves by player 'O' and '*'s are spots no one has yet played on
     """
 
-    pass
-
+    def __init__(self):
+        self.board = ['*','*','*','*','*','*','*','*','*']
 
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
@@ -34,7 +34,12 @@ def play_tic_tac_toe() -> None:
     brd = TTTBoard()
     players = ["X", "O"]
     turn = 0
-
+    def __str__(self):
+        for i in self.board:
+            if i%3 == 0:
+                print("\n")
+            else:
+                print(i)
     while not brd.game_over():
         print(brd)
         move: str = input(f"Player {players[turn]} what is your move? ")
