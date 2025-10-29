@@ -23,20 +23,73 @@ class TTTBoard:
         self.board =  ['*','*','*','*','*','*','*','*','*']
 
     def __str__(self):
-        for idx, val in enumerate(self.board):
-            if idx % 3 == 0 and idx != 0:
-                print()
-                print(val, end=" ")
-        return ""
-    # def game_over(self):
-    #     count = 0
-    #     for idx, val in enumerate(self.board):
-    #         if val != "X"
+        rows = []
+        for i in range(0, 9, 3):
+            row = " ".join(self.board[i:i+3])
+            rows.append(row)
+        return "\n".join(rows)
 
-    #         if val == "O"
 
-    #         if (val != "*"):
-    #             return True
+    def has_won(self, player):
+        if self.board[0] == player and self.board[1] == player and self.board[2] == player:
+            return True
+
+        if self.board[0] == player and self.board[3] == player and self.board[6] == player:
+            return True
+
+        if self.board[0] == player and self.board[4] == player and self.board[8] == player:
+            return True
+
+        if self.board[1] == player and self.board[4] == player and self.board[7] == player:
+            return True
+
+        if self.board[2] == player and self.board[5] == player and self.board[8] == player:
+            return True
+
+        if self.board[3] == player and self.board[4] == player and self.board[5] == player:
+            return True
+
+        if self.board[6] == player and self.board[7] == player and self.board[8] == player:
+            return True
+
+        if self.board[2] == player and self.board[4] == player and self.board[6] == player:
+            return True
+        return False
+
+    def game_over(self):
+        if self.board[0] == "X" and self.board[1] == "X" and self.board[2] == "X":
+            return True
+        if self.board[0] == "O" and self.board[1] == "O" and self.board[2] == "O":
+            return True
+        if self.board[0] == "X" and self.board[3] == "X" and self.board[6] == "X":
+            return True
+        if self.board[0] == "O" and self.board[3] == "O" and self.board[6] == "O":
+            return True
+        if self.board[0] == "X" and self.board[4] == "X" and self.board[8] == "X":
+            return True
+        if self.board[0] == "O" and self.board[4] == "O" and self.board[8] == "O":
+            return True
+        if self.board[1] == "X" and self.board[4] == "X" and self.board[7] == "X":
+            return True
+        if self.board[1] == "O" and self.board[4] == "O" and self.board[7] == "O":
+            return True
+        if self.board[2] == "X" and self.board[5] == "X" and self.board[8] == "X":
+            return True
+        if self.board[2] == "O" and self.board[5] == "O" and self.board[8] == "O":
+            return True
+        if self.board[3] == "X" and self.board[4] == "X" and self.board[5] == "X":
+            return True
+        if self.board[3] == "O" and self.board[4] == "O" and self.board[5] == "O":
+            return True
+        if self.board[6] == "X" and self.board[7] == "X" and self.board[8] == "X":
+            return True
+        if self.board[6] == "O" and self.board[7] == "O" and self.board[8] == "O":
+            return True
+        if self.board[2] == "X" and self.board[4] == "X" and self.board[6] == "X":
+            return True
+        if self.board[2] == "O" and self.board[4] == "O" and self.board[6] == "O":
+            return True
+        return False
 
 
 def play_tic_tac_toe() -> None:
@@ -116,4 +169,4 @@ if __name__ == "__main__":
     print("All tests passed!")
 
     # uncomment to play!
-    # play_tic_tac_toe()
+    play_tic_tac_toe()
