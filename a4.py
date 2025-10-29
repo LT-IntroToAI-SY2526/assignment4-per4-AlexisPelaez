@@ -13,12 +13,38 @@ class TTTBoard:
     def __init__(self):
         self.board = ['*','*','*','*','*','*','*','*','*']
 
+    def make_move(self, player, pos):
+        if self.board[pos] == "X" or self.board[pos] == "O":
+            return False
+        self.board[pos] = player
+        return True
+
+    def clear(self):
+        self.board =  ['*','*','*','*','*','*','*','*','*']
+
+    def __str__(self):
+        for idx, val in enumerate(self.board):
+            if idx % 3 == 0 and idx != 0:
+                print()
+                print(val, end=" ")
+        return ""
+    # def game_over(self):
+    #     count = 0
+    #     for idx, val in enumerate(self.board):
+    #         if val != "X"
+
+    #         if val == "O"
+
+    #         if (val != "*"):
+    #             return True
+
+
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
 
     def is_int(maybe_int: str):
         """Returns True if val is int, False otherwise
-
+        
         Args:
             maybe_int - string to check if it's an int
 
@@ -34,12 +60,7 @@ def play_tic_tac_toe() -> None:
     brd = TTTBoard()
     players = ["X", "O"]
     turn = 0
-    def __str__(self):
-        for i in self.board:
-            if i%3 == 0:
-                print("\n")
-            else:
-                print(i)
+
     while not brd.game_over():
         print(brd)
         move: str = input(f"Player {players[turn]} what is your move? ")
@@ -66,6 +87,7 @@ if __name__ == "__main__":
     # need to write some more tests to make sure that your TTTBoard class is behaving
     # properly.
     brd = TTTBoard()
+    print(brd)
     brd.make_move("X", 8)
     brd.make_move("O", 7)
 
