@@ -14,7 +14,7 @@ class TTTBoard:
         self.board = ['*','*','*','*','*','*','*','*','*']
 
     def make_move(self, player, pos):
-        if 0 <= pos and self.board[pos] == '*':
+        if 0 <= pos <= 8 and self.board[pos] == '*':
             self.board[pos] = player
             return True
         return False
