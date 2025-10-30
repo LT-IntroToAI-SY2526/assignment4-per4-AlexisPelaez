@@ -14,20 +14,22 @@ class TTTBoard:
         self.board = ['*','*','*','*','*','*','*','*','*']
 
     def make_move(self, player, pos):
-        if self.board[pos] == "X" or self.board[pos] == "O":
-            return False
-        self.board[pos] = player
-        return True
+        if 0 <= pos and self.board[pos] == '*':
+            self.board[pos] = player
+            return True
+        return False
 
     def clear(self):
         self.board =  ['*','*','*','*','*','*','*','*','*']
 
     def __str__(self):
-        rows = []
-        for i in range(0, 9, 3):
-            row = " ".join(self.board[i:i+3])
-            rows.append(row)
-        return "\n".join(rows)
+        return f"{self.board[0]} {self.board[1]} {self.board[2]}\n{self.board[3]} {self.board[4]} {self.board[5]}\n{self.board[6]} {self.board[7]} {self.board[8]}"
+        # rows = []
+        # for i in range(0, 9, 3):
+        #     row = " ".join(self.board[i:i+3])
+        #     rows.append(row)
+        # return "\n".join(rows)
+
 
 
     def has_won(self, player):
